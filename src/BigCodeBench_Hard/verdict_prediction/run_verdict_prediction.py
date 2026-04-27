@@ -1,7 +1,7 @@
 """
 Verdict Prediction Generation for BigCodeBench-Hard.
 
-Methods: direct_verdict, reasoned_verdict, failure_analysis
+Methods: direct_verdict, verdict_with_analysis, verdict_with_diagnosis
 Models:  qwen3-coder-30B-A3B-instruct, claude-haiku-4-5-20251001, gpt-5-mini-2025-08-07
 Code idx: 0 only
 
@@ -33,7 +33,7 @@ _THIS = Path(__file__).resolve().parent
 sys.path.insert(0, str(_THIS))
 sys.path.insert(0, str(_THIS.parent))
 
-from vp_template import PRED_PROMPT_TMPL, BUG_REPORT_PROMPT_TMPL, BUG_LOCAL_PROMPT_TMPL
+from vp_template import METHOD_PROMPTS
 from utils import load_generated_codes, split_test_cases, load_bigcodebench_hard
 
 logging.basicConfig(
@@ -49,17 +49,17 @@ logging.basicConfig(
 
 METHOD_CONFIGS = {
     "direct_verdict": {
-        "template": PRED_PROMPT_TMPL,
+        "template": METHOD_PROMPTS["direct_verdict"],
         "max_concurrent": 5,
         "timeout": 60,
     },
-    "reasoned_verdict": {
-        "template": BUG_REPORT_PROMPT_TMPL,
+    "verdict_with_analysis": {
+        "template": METHOD_PROMPTS["verdict_with_analysis"],
         "max_concurrent": 5,
         "timeout": 60,
     },
-    "failure_analysis": {
-        "template": BUG_LOCAL_PROMPT_TMPL,
+    "verdict_with_diagnosis": {
+        "template": METHOD_PROMPTS["verdict_with_diagnosis"],
         "max_concurrent": 3,
         "timeout": 120,
     },
@@ -69,11 +69,10 @@ MODEL_CONFIGS = {
     "qwen3-coder-30B-A3B-instruct": {
         "api_model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
         "api_key": "EMPTY",
-        "base_url": "http://129.254.222.36:8008/v1",
+        "base_url": "http://localhost:8008/v1",
         "extra_body": {"repetition_penalty": 1.05},
         "max_tokens": 8192,
-        # "temperature": 0.0,
-        "temperature": 0.8,
+        "temperature": 0.0,
     },
     "gpt-5-mini-2025-08-07": {
         "api_model": "gpt-5-mini-2025-08-07",

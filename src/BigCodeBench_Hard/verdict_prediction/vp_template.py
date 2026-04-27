@@ -1,4 +1,4 @@
-PRED_PROMPT_TMPL = '''
+DIRECT_VERDICT_PROMPT = '''
 You are a skilled Python programmer and code reviewer.
 Carefully evaluate if the given code passes all provided public and hidden test cases.
 
@@ -32,7 +32,7 @@ Testcase:
 ```
 '''
 
-BUG_REPORT_PROMPT_TMPL = '''
+VERDICT_WITH_ANALYSIS_PROMPT = '''
 You are a skilled Python programmer and code reviewer.
 Carefully evaluate whether the given code can pass the given single test case, and present your reasoning and final judgment.
 
@@ -71,7 +71,7 @@ Testcase:
 ```
 '''
 
-BUG_LOCAL_PROMPT_TMPL = '''
+VERDICT_WITH_DIAGNOSIS_PROMPT = '''
 You are a skilled Python programmer and code reviewer.
 Carefully evaluate whether the given code can pass all provided public and hidden test cases, and present your reasoning and final judgment.
 
@@ -110,3 +110,9 @@ Testcase:
 {testcase}
 ```
 '''
+
+METHOD_PROMPTS = {
+    "direct_verdict": DIRECT_VERDICT_PROMPT,
+    "verdict_with_analysis": VERDICT_WITH_ANALYSIS_PROMPT,
+    "verdict_with_diagnosis": VERDICT_WITH_DIAGNOSIS_PROMPT,
+}

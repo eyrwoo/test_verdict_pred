@@ -1,7 +1,7 @@
 """
 Verdict Prediction Generation for LiveCodeBench.
 
-Methods:   direct_verdict, reasoned_verdict, failure_analysis
+Methods:   direct_verdict, verdict_with_analysis, verdict_with_diagnosis
 Models:    qwen3-coder-30B-A3B-instruct, claude-haiku-4-5-20251001, gpt-5-mini-2025-08-07
 Code idx:  0 only
 
