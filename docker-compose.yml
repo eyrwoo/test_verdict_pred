@@ -1,0 +1,14 @@
+services:
+  vp4tcp:
+    build: .
+    env_file:
+      - .env.docker
+    volumes:
+      - ./LiveCodeBench/results:/workspace/LiveCodeBench/results
+      - ./BigCodeBench_Hard/results:/workspace/BigCodeBench_Hard/results
+      - ./LiveCodeBench/actual_exec/results:/workspace/LiveCodeBench/actual_exec/results:ro
+      - ./BigCodeBench_Hard/actual_exec/results:/workspace/BigCodeBench_Hard/actual_exec/results:ro
+      - hf_cache:/root/.cache/huggingface
+
+volumes:
+  hf_cache:

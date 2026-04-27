@@ -1,0 +1,9 @@
+.venv/
+.env
+.env.docker
+**/__pycache__/
+**/*.pyc
+**/.bak/
+.git/
+LiveCodeBench/results/
+BigCodeBench_Hard/results/
