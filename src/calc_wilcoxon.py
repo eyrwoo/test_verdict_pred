@@ -54,7 +54,7 @@ BASELINES: List[Tuple[str, str]] = [
 ]
 
 VP_VARIANTS  = ["vp_original", "vp_random", "vp_length", "vp_token_input_desc", "vp_token_output_desc", "vp_token_output_asc"]
-PROMPT_TYPES = ["direct_verdict", "reasoned_verdict", "failure_analysis"]
+PROMPT_TYPES = ["direct_verdict", "verdict_with_analysis", "verdict_with_diagnosis"]
 
 MODEL_DISPLAY: Dict[str, str] = {
     "qwen3-coder-30B-A3B-instruct": "Qwen3-coder",

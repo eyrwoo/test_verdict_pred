@@ -80,14 +80,8 @@ def _load_bcb_tc_texts(dataset_path: Optional[str]) -> Dict[str, Dict[str, str]]
 
 
 def _load_bcb_template_map() -> Dict[str, str]:
-    from BigCodeBench_Hard.verdict_prediction.vp_template import (
-        PRED_PROMPT_TMPL, BUG_REPORT_PROMPT_TMPL, BUG_LOCAL_PROMPT_TMPL
-    )
-    return {
-        "direct_verdict":   PRED_PROMPT_TMPL,
-        "reasoned_verdict": BUG_REPORT_PROMPT_TMPL,
-        "failure_analysis": BUG_LOCAL_PROMPT_TMPL,
-    }
+    from BigCodeBench_Hard.verdict_prediction.vp_template import METHOD_PROMPTS
+    return dict(METHOD_PROMPTS)
 
 
 def _load_bcb_codes(generated_code_path: str) -> Dict[str, str]:

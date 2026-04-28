@@ -1,14 +1,23 @@
 services:
   vp4tcp:
     build: .
+    working_dir: /workspace
     env_file:
-      - .env.docker
+      - path: .env.docker
+        required: false
+    environment:
+      HF_HOME: /root/.cache/huggingface
+      PYTHONPATH: /workspace/src:/workspace/src/LiveCodeBench/actual_exec/LiveCodeBench:/workspace/src/BigCodeBench_Hard/actual_exec/bigcodebench
     volumes:
-      - ./LiveCodeBench/results:/workspace/LiveCodeBench/results
-      - ./BigCodeBench_Hard/results:/workspace/BigCodeBench_Hard/results
-      - ./LiveCodeBench/actual_exec/results:/workspace/LiveCodeBench/actual_exec/results:ro
-      - ./BigCodeBench_Hard/actual_exec/results:/workspace/BigCodeBench_Hard/actual_exec/results:ro
+      - ./src/results:/workspace/src/results
+      - ./src/LiveCodeBench/verdict_prediction/results:/workspace/src/LiveCodeBench/verdict_prediction/results
+      - ./src/BigCodeBench_Hard/verdict_prediction/results:/workspace/src/BigCodeBench_Hard/verdict_prediction/results
+      - ./src/LiveCodeBench/actual_exec/results:/workspace/src/LiveCodeBench/actual_exec/results:ro
+      - ./src/BigCodeBench_Hard/actual_exec/results:/workspace/src/BigCodeBench_Hard/actual_exec/results:ro
       - hf_cache:/root/.cache/huggingface
+    stdin_open: true
+    tty: true
+    command: bash
 
 volumes:
   hf_cache:

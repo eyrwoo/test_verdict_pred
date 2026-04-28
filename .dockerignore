@@ -5,5 +5,11 @@
 **/*.pyc
 **/.bak/
 .git/
+**/.git/
+src/results/
+src/LiveCodeBench/results/
+src/BigCodeBench_Hard/results/
+src/LiveCodeBench/verdict_prediction/results/
+src/BigCodeBench_Hard/verdict_prediction/results/
 LiveCodeBench/results/
 BigCodeBench_Hard/results/

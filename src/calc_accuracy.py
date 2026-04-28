@@ -192,7 +192,7 @@ def main():
     parser.add_argument("--pred-file",    required=True, help="Path to test.jsonl")
     parser.add_argument("--truth-file",   required=True, help="Path to ground-truth JSON")
     parser.add_argument("--method",       required=True,
-                        choices=["direct_verdict", "reasoned_verdict", "failure_analysis"])
+                        choices=["direct_verdict", "verdict_with_analysis", "verdict_with_diagnosis"])
     parser.add_argument("--model",        required=True)
     parser.add_argument("--results-dir",  required=True,
                         help="Base results dir (accuracy/ and accuracy.csv written here)")
